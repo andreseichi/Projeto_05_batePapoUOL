@@ -1,4 +1,28 @@
 const mensagensDiv = document.querySelector('.mensagens');
+let usuarioName = '';
+
+function logarSala() {
+  usuarioName = prompt('Digite seu user:');
+  const usuario = { name: usuarioName };
+  const response = axios
+    .post('https://mock-api.driven.com.br/api/v6/uol/participants', usuario)
+    .then(() => {
+      carregarMensagens();
+      setInterval(() => manterConexao(), 4750);
+    })
+    .catch(tratar);
+
+  function tratar(err) {
+    if (err.response.status !== 200) {
+      usuarioName = prompt('User já logado, digite outro user:');
+      const usuario = { name: usuarioName };
+      const response = axios
+        .post('https://mock-api.driven.com.br/api/v6/uol/participants', usuario)
+        .catch(tratar);
+    }
+  }
+}
+logarSala();
 
 function carregarMensagens() {
   mensagensDiv.innerHTML = '';
@@ -28,6 +52,10 @@ function carregarMensagens() {
   }
 }
 
-carregarMensagens();
+function manterConexao() {
+  const usuario = { name: usuarioName };
+
+  axios.post('https://mock-api.driven.com.br/api/v6/uol/status', usuario);
+}
 
 setInterval(carregarMensagens, 3000);
