@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./styles/style.css " />
+
+    <title>Bate-Papo UOL</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-conteudo">
+        <img src="./assets/images/logo.png" alt="Logo Bate-Papo UOL" />
+
+        <img src="./assets/images/user.svg" alt="Ícone usuário" />
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="mensagem entra-sai">
+        <time class="hora">(09:21:45)</time> <span>João</span> entra na sala...
+      </div>
+      <div class="mensagem normal">
+        <time class="hora">(09:22:28)</time> <span>João</span> para
+        <span>Todos</span>: Bom dia
+      </div>
+      <div class="mensagem normal">
+        <time class="hora">(09:22:38)</time> <span>Maria</span> para
+        <span>João</span>: Oi João :)
+      </div>
+      <div class="mensagem reservada">
+        <time class="hora">(09:22:48)</time> <span>João</span> reservadamente
+        para <span>Maria</span>: Oi gatinha quer tc?
+      </div>
+      <div class="mensagem entra-sai">
+        <time class="hora">(09:22:58)</time> <span>Maria</span> sai da sala...
+      </div>
+    </main>
+
+    <footer class="footer-container">
+      <div class="escrever-mensagem">
+        <input type="text" placeholder="Escreva aqui..." />
+        <span>Enviando para Maria (reservadamente)</span>
+      </div>
+
+      <img src="./assets/images/send.svg" alt="Ícone enviar" />
+    </footer>
+  </body>
+</html>
