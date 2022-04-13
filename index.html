@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="./styles/style.css " />
 
-    <title>Bate-Papo UOL - teste</title>
+    <title>Bate-Papo UOL</title>
   </head>
   <body>
     <header class="header">
@@ -25,23 +25,23 @@
       </div>
     </header>
 
-    <main class="main">
-      <div class="mensagem entra-sai">
+    <main class="main mensagens">
+      <div class="mensagem status">
         <time class="hora">(09:21:45)</time> <span>João</span> entra na sala...
       </div>
-      <div class="mensagem normal">
+      <div class="mensagem message">
         <time class="hora">(09:22:28)</time> <span>João</span> para
         <span>Todos</span>: Bom dia
       </div>
-      <div class="mensagem normal">
+      <div class="mensagem message">
         <time class="hora">(09:22:38)</time> <span>Maria</span> para
         <span>João</span>: Oi João :)
       </div>
-      <div class="mensagem reservada">
+      <div class="mensagem private_message">
         <time class="hora">(09:22:48)</time> <span>João</span> reservadamente
         para <span>Maria</span>: Oi gatinha quer tc?
       </div>
-      <div class="mensagem entra-sai">
+      <div class="mensagem status">
         <time class="hora">(09:22:58)</time> <span>Maria</span> sai da sala...
       </div>
     </main>
@@ -54,5 +54,8 @@
 
       <img src="./assets/images/send.svg" alt="Ícone enviar" />
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./scripts/script.js"></script>
   </body>
 </html>
