@@ -1,5 +1,7 @@
 const mensagensDiv = document.querySelector('.mensagens');
 let usuarioName = '';
+let destinatario = 'Todos';
+let mesageType = 'message';
 
 function logarSala() {
   usuarioName = prompt('Digite seu user:');
@@ -8,7 +10,8 @@ function logarSala() {
     .post('https://mock-api.driven.com.br/api/v6/uol/participants', usuario)
     .then(() => {
       carregarMensagens();
-      setInterval(() => manterConexao(), 4750);
+      setInterval(carregarMensagens, 3000);
+      setInterval(manterConexao, 4750);
     })
     .catch(tratar);
 
@@ -20,6 +23,12 @@ function logarSala() {
         .post('https://mock-api.driven.com.br/api/v6/uol/participants', usuario)
         .catch(tratar);
     }
+  }
+
+  function manterConexao() {
+    const usuario = { name: usuarioName };
+
+    axios.post('https://mock-api.driven.com.br/api/v6/uol/status', usuario);
   }
 }
 logarSala();
@@ -40,10 +49,18 @@ function carregarMensagens() {
         mensagensDiv.innerHTML += mensagemTemplate;
       } else {
         const mensagemTemplate = `<div class="mensagem ${dados.type}">
-          <time class="hora">(${dados.time})</time> <span>${dados.from}</span> para
-          <span>${dados.to}</span>: ${dados.text}
+        <time class="hora">(${dados.time})</time> <span>${dados.from}</span> para
+        <span>${dados.to}</span>: ${dados.text}
         </div>`;
-        mensagensDiv.innerHTML += mensagemTemplate;
+
+        if (dados.type === 'private_message' && dados.from === usuarioName) {
+          mensagensDiv.innerHTML += mensagemTemplate;
+        }
+        if (dados.type === 'private_message' && dados.to !== usuarioName) {
+          // n faz nada (n renderiza a mensagem)
+        } else {
+          mensagensDiv.innerHTML += mensagemTemplate;
+        }
       }
     });
 
@@ -52,10 +69,29 @@ function carregarMensagens() {
   }
 }
 
-function manterConexao() {
-  const usuario = { name: usuarioName };
+function enviarMensagem() {
+  const mensagem = document.getElementById('mensagem-text').value;
 
-  axios.post('https://mock-api.driven.com.br/api/v6/uol/status', usuario);
+  const data = {
+    from: usuarioName,
+    to: destinatario,
+    text: mensagem,
+    type: mesageType,
+  };
+
+  axios
+    .post('https://mock-api.driven.com.br/api/v6/uol/messages', data)
+    .then(carregarMensagens)
+    .catch(() => window.location.reload());
 }
 
-setInterval(carregarMensagens, 3000);
+function adicionarEventoTexto() {
+  document
+    .getElementById('mensagem-text')
+    .addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        enviarMensagem();
+      }
+    });
+}
+adicionarEventoTexto();

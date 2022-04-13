@@ -48,11 +48,20 @@
 
     <footer class="footer-container">
       <div class="escrever-mensagem">
-        <input type="text" placeholder="Escreva aqui..." />
+        <input
+          type="text"
+          placeholder="Escreva aqui..."
+          class="mensagem-text"
+          id="mensagem-text"
+        />
         <span>Enviando para Maria (reservadamente)</span>
       </div>
 
-      <img src="./assets/images/send.svg" alt="Ícone enviar" />
+      <img
+        src="./assets/images/send.svg"
+        alt="Ícone enviar"
+        onclick="enviarMensagem()"
+      />
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
