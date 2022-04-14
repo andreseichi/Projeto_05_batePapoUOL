@@ -21,6 +21,11 @@ function logarSala() {
       const usuario = { name: usuarioName };
       const response = axios
         .post('https://mock-api.driven.com.br/api/v6/uol/participants', usuario)
+        .then(() => {
+          carregarMensagens();
+          setInterval(carregarMensagens, 3000);
+          setInterval(manterConexao, 4750);
+        })
         .catch(tratar);
     }
   }
