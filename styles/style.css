@@ -19,6 +19,11 @@ body {
   align-items: center;
   justify-content: center;
 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
   background-color: #fff;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
 }
@@ -120,4 +125,67 @@ body {
   font-size: 14px;
 
   margin-top: 4px;
+}
+
+/* aside */
+.menu {
+  position: fixed;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 5;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: flex-end;
+
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.hidden {
+  display: none;
+}
+
+.menu .aside-conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 300px;
+
+  text-align: center;
+
+  padding: 22px 20px;
+
+  background-color: white;
+}
+
+.menu .aside-conteudo img {
+  font-size: 25px;
+
+  width: 25px;
+  height: 25px;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 19px;
+}
+
+.menu .aside-conteudo .contatos {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  margin-top: 28px;
+}
+
+.contatos .todos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
