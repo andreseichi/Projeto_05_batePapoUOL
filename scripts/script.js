@@ -75,6 +75,7 @@ function carregarMensagens() {
 }
 
 function enviarMensagem() {
+  const inputElement = document.getElementById('mensagem-text');
   const mensagem = document.getElementById('mensagem-text').value;
 
   const data = {
@@ -88,6 +89,8 @@ function enviarMensagem() {
     .post('https://mock-api.driven.com.br/api/v6/uol/messages', data)
     .then(carregarMensagens)
     .catch(() => window.location.reload());
+
+  inputElement.value = '';
 }
 
 function adicionarEventoTexto() {
