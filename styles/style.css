@@ -12,6 +12,10 @@ body {
   position: relative;
 }
 
+img {
+  cursor: pointer;
+}
+
 .header {
   width: 100%;
 
